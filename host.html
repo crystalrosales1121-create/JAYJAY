@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+     <head>
+
+        <title> Localhost </title>
+     </head>
+<body>
+       <header class="header">
+       <a href="#home" class="logo">
+       CJ <span> Rosales </span>
+       </a>
+
+     <nav class="nav-menu">
+                    <a href="#home">Home</a>
+                    <a href="#product">Product</a>
+                    <a href="#about">About</a>
+                    <a href="#admin">Admin</a>
+                    <a href="app.html" class="nav-button">Sign In</a>
+                </nav>
+            </div>
+        </header>
+
+<main>
+           <?php
+           include 'db.php';
+
+$sql = "SELECT * FROM products;
+$results = $conn->query ($sql);
+?>
+
+           <div class="product-grid">
+
+        <?php
+
+       if ($result && $result->num_rows > 0) {
+        while ($product = $result->fetch_assoc()) {
+       ?>
+           <div class="product-card">
+
+            <div class="image">
+             <img src="apple.jpg" alt="apple">
+           </div">
+
+<div class="fruits">
+    <a> Apple </a>
+</div>
+
+            <div class="price">
+              <a> 1$ </a>
+            </div>
+
+<div class="stocks"> 
+    <a> Stocks:100 </a>
+</div>
+
+            <div class="button">
+              <button> Buy Now </button>
+              <button> Add to Cart </button>
+            </div>
+    <?php
+     }
+    }else {
+    echo "<p> No products available.</p>
+   }
+    $conn->close();
+  ?>
+
+</main>
+</body>
+</html>
+
+
